@@ -20,5 +20,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Compilar y ejecutar tests de la Calculadora
-        run: mvn clean test
+      - name: Compilar y empaquetar con Maven
+        run: mvn clean package
+
+      - name: Guardar la Calculadora compilada
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculadora-app
+          path: target/*.jar
