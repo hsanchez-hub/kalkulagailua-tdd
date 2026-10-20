@@ -9,15 +9,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '17', '21' ]
 
     steps:
       - name: Descargar el código del repositorio
         uses: actions/checkout@v4
 
-      - name: Configurar el JDK 17
+      - name: Configurar el JDK ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: ${{ matrix.java }}
           distribution: 'temurin'
 
       - name: Compilar y empaquetar con Maven
@@ -26,5 +29,5 @@ jobs:
       - name: Guardar la Calculadora compilada
         uses: actions/upload-artifact@v4
         with:
-          name: calculadora-app
+          name: calculadora-app-java${{ matrix.java }}
           path: target/*.jar
