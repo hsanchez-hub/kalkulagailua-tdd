@@ -35,4 +35,9 @@ public class Ikaslea {
         Ikaslea ikaslea = (Ikaslea) obj;
         return Objects.equals(id, ikaslea.id);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
