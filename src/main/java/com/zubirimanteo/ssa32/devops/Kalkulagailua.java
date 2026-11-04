@@ -1,5 +1,6 @@
 package com.zubirimanteo.ssa32.devops;
 
+import java.util.List;
 public class Kalkulagailua {
 
     public int batu(int a, int b) {
